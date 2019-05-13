@@ -1,0 +1,19 @@
+*** Variables ***
+${Environment}    LOCAL
+${Login_Type}     LOCAL
+${RetryMinCount}    5
+${RetryMaxCount}    8
+${RetryIntervalMin}    15
+${RetryIntervalMax}    20
+${deviceName}     60aeda730803
+${PlatformVersion}    8.1.0
+${PlatformName}    Android
+${AppiumHost}     http://localhost:4723/wd/hub
+${appiumVersion}    1.6.1
+${AppActivity}    org.gnucash.android.ui.account.AccountsActivity
+${REMOTE_URL}     http://localhost:4723/wd/hub
+${app}            ${CURDIR}/../../apk/GnucashAndroid.apk
+${platformName}    Android
+${automationName}    UiAutomator2
+${appActivity}    org.gnucash.android.ui.account.AccountsActivity
+${appPackage}     org.gnucash.android

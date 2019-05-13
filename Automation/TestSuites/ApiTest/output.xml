@@ -1,0 +1,1048 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20190513 15:58:58.792" generator="Robot 3.1.1 (Python 2.7.10 on darwin)">
+<suite source="/Users/truptisalvi/Desktop/n26/Final/Automation/TestSuites/ApiTest/ProductsApi.robot" id="s1" name="ProductsApi">
+<test id="s1-t1" name="EndtoEndtestcase">
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this
+before issuing any HTTP requests.</doc>
+<arguments>
+<arg>${Host}</arg>
+<arg>${Verb}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.496" level="INFO">Host for next HTTP request set to 'localhost:3030'</msg>
+<msg timestamp="20190513 15:58:59.496" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20190513 15:58:59.496" starttime="20190513 15:58:59.496"></status>
+</kw>
+<kw name="Set Header" library="Api-Keywords">
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Content Application</arg>
+<arg>application/json</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.497" level="INFO">Set request header "Content Application" to "application/json"</msg>
+<status status="PASS" endtime="20190513 15:58:59.497" starttime="20190513 15:58:59.497"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.497" starttime="20190513 15:58:59.496"></status>
+</kw>
+<kw name="Set Request Body" library="HttpLibrary.HTTP">
+<doc>Set the request body for the next HTTP request.</doc>
+<arguments>
+<arg>${Body}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.498" level="INFO">Request body set to "name=Trupti&amp;type=Test&amp;upc=xyz&amp;description=postapitest&amp;model=first".</msg>
+<status status="PASS" endtime="20190513 15:58:59.498" starttime="20190513 15:58:59.498"></status>
+</kw>
+<kw name="POST" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP POST request.</doc>
+<arguments>
+<arg>${ProductsUri}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.588" starttime="20190513 15:58:59.498"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>201</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.589" level="INFO">${Status} = 201 Created</msg>
+<status status="PASS" endtime="20190513 15:58:59.589" starttime="20190513 15:58:59.589"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.590" starttime="20190513 15:58:59.590"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.591" starttime="20190513 15:58:59.588"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.593" level="INFO">${Response} = {"id":9999729,"name":"Trupti","type":"Test","upc":"xyz","description":"postapitest","model":"first","updatedAt":"2019-05-13T10:28:59.568Z","createdAt":"2019-05-13T10:28:59.568Z"}</msg>
+<status status="PASS" endtime="20190513 15:58:59.593" starttime="20190513 15:58:59.592"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.594" level="INFO">{"id":9999729,"name":"Trupti","type":"Test","upc":"xyz","description":"postapitest","model":"first","updatedAt":"2019-05-13T10:28:59.568Z","createdAt":"2019-05-13T10:28:59.568Z"}</msg>
+<status status="PASS" endtime="20190513 15:58:59.594" starttime="20190513 15:58:59.594"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.595" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:58:59.595" starttime="20190513 15:58:59.594"></status>
+</kw>
+<msg timestamp="20190513 15:58:59.595" level="INFO">${Response} = {"id":9999729,"name":"Trupti","type":"Test","upc":"xyz","description":"postapitest","model":"first","updatedAt":"2019-05-13T10:28:59.568Z","createdAt":"2019-05-13T10:28:59.568Z"}</msg>
+<status status="PASS" endtime="20190513 15:58:59.595" starttime="20190513 15:58:59.591"></status>
+</kw>
+<kw name="Response Body Should Contain" library="HttpLibrary.HTTP">
+<doc>Fails if the response body does not contain `should_contain`</doc>
+<arguments>
+<arg>"name":"Trupti"</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.596" starttime="20190513 15:58:59.595"></status>
+</kw>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
+<arguments>
+<arg>${Response}</arg>
+<arg>/id</arg>
+</arguments>
+<assign>
+<var>${Orderid}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.597" level="INFO">${Orderid} = 9999729</msg>
+<status status="PASS" endtime="20190513 15:58:59.597" starttime="20190513 15:58:59.597"></status>
+</kw>
+<kw name="GET" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>${ProductsUri}/${Orderid}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.616" starttime="20190513 15:58:59.598"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>200</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.617" level="INFO">${Status} = 200 OK</msg>
+<status status="PASS" endtime="20190513 15:58:59.617" starttime="20190513 15:58:59.617"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.617" starttime="20190513 15:58:59.617"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.618" starttime="20190513 15:58:59.616"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.618" level="INFO">${Response} = {"id":9999729,"name":"Trupti","type":"Test","price":null,"upc":"xyz","shipping":null,"description":"postapitest","manufacturer":null,"model":"first","url":null,"image":null,"createdAt":"2019-05-13T10:...</msg>
+<status status="PASS" endtime="20190513 15:58:59.618" starttime="20190513 15:58:59.618"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.619" level="INFO">{"id":9999729,"name":"Trupti","type":"Test","price":null,"upc":"xyz","shipping":null,"description":"postapitest","manufacturer":null,"model":"first","url":null,"image":null,"createdAt":"2019-05-13T10:28:59.568Z","updatedAt":"2019-05-13T10:28:59.568Z","categories":[]}</msg>
+<status status="PASS" endtime="20190513 15:58:59.619" starttime="20190513 15:58:59.619"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.619" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:58:59.619" starttime="20190513 15:58:59.619"></status>
+</kw>
+<msg timestamp="20190513 15:58:59.620" level="INFO">${Response} = {"id":9999729,"name":"Trupti","type":"Test","price":null,"upc":"xyz","shipping":null,"description":"postapitest","manufacturer":null,"model":"first","url":null,"image":null,"createdAt":"2019-05-13T10:...</msg>
+<status status="PASS" endtime="20190513 15:58:59.620" starttime="20190513 15:58:59.618"></status>
+</kw>
+<kw name="Response Body Should Contain" library="HttpLibrary.HTTP">
+<doc>Fails if the response body does not contain `should_contain`</doc>
+<arguments>
+<arg>"id":${Orderid}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.621" starttime="20190513 15:58:59.620"></status>
+</kw>
+<kw name="Set Request Body" library="HttpLibrary.HTTP">
+<doc>Set the request body for the next HTTP request.</doc>
+<arguments>
+<arg>${Body}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.622" level="INFO">Request body set to "name=Trupti&amp;type=Test&amp;upc=xyz&amp;description=postapitest&amp;model=first".</msg>
+<status status="PASS" endtime="20190513 15:58:59.622" starttime="20190513 15:58:59.621"></status>
+</kw>
+<kw name="PUT" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP PUT request.</doc>
+<arguments>
+<arg>${ProductsUri}/${Orderid}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.642" starttime="20190513 15:58:59.622"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>200</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.645" level="INFO">${Status} = 200 OK</msg>
+<status status="PASS" endtime="20190513 15:58:59.645" starttime="20190513 15:58:59.644"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.645" starttime="20190513 15:58:59.645"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.646" starttime="20190513 15:58:59.642"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.647" level="INFO">${Response} = {"id":9999729,"name":"Trupti","type":"Test","price":null,"upc":"xyz","shipping":null,"description":"postapitest","manufacturer":null,"model":"first","url":null,"image":null,"createdAt":"2019-05-13T10:...</msg>
+<status status="PASS" endtime="20190513 15:58:59.647" starttime="20190513 15:58:59.647"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.648" level="INFO">{"id":9999729,"name":"Trupti","type":"Test","price":null,"upc":"xyz","shipping":null,"description":"postapitest","manufacturer":null,"model":"first","url":null,"image":null,"createdAt":"2019-05-13T10:28:59.568Z","updatedAt":"2019-05-13T10:28:59.568Z"}</msg>
+<status status="PASS" endtime="20190513 15:58:59.648" starttime="20190513 15:58:59.648"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.649" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:58:59.649" starttime="20190513 15:58:59.649"></status>
+</kw>
+<msg timestamp="20190513 15:58:59.649" level="INFO">${Response} = {"id":9999729,"name":"Trupti","type":"Test","price":null,"upc":"xyz","shipping":null,"description":"postapitest","manufacturer":null,"model":"first","url":null,"image":null,"createdAt":"2019-05-13T10:...</msg>
+<status status="PASS" endtime="20190513 15:58:59.649" starttime="20190513 15:58:59.646"></status>
+</kw>
+<kw name="DELETE" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP DELETE request.</doc>
+<arguments>
+<arg>${ProductsUri}/${Orderid}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.668" starttime="20190513 15:58:59.650"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>200</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.670" level="INFO">${Status} = 200 OK</msg>
+<status status="PASS" endtime="20190513 15:58:59.670" starttime="20190513 15:58:59.670"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.671" starttime="20190513 15:58:59.671"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.671" starttime="20190513 15:58:59.668"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.674" level="INFO">${Response} = {"id":9999729,"name":"Trupti","type":"Test","price":null,"upc":"xyz","shipping":null,"description":"postapitest","manufacturer":null,"model":"first","url":null,"image":null,"createdAt":"2019-05-13T10:...</msg>
+<status status="PASS" endtime="20190513 15:58:59.674" starttime="20190513 15:58:59.673"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.674" level="INFO">{"id":9999729,"name":"Trupti","type":"Test","price":null,"upc":"xyz","shipping":null,"description":"postapitest","manufacturer":null,"model":"first","url":null,"image":null,"createdAt":"2019-05-13T10:28:59.568Z","updatedAt":"2019-05-13T10:28:59.568Z"}</msg>
+<status status="PASS" endtime="20190513 15:58:59.675" starttime="20190513 15:58:59.674"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.677" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:58:59.678" starttime="20190513 15:58:59.675"></status>
+</kw>
+<msg timestamp="20190513 15:58:59.679" level="INFO">${Response} = {"id":9999729,"name":"Trupti","type":"Test","price":null,"upc":"xyz","shipping":null,"description":"postapitest","manufacturer":null,"model":"first","url":null,"image":null,"createdAt":"2019-05-13T10:...</msg>
+<status status="PASS" endtime="20190513 15:58:59.679" starttime="20190513 15:58:59.672"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>HttpLibrary.HTTP.Delete</arg>
+<arg>${ProductsUri}/${Orderid}</arg>
+</arguments>
+<kw name="DELETE" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP DELETE request.</doc>
+<arguments>
+<arg>${ProductsUri}/${Orderid}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.688" level="FAIL">Request should have succeeded, but was "404 Not Found".</msg>
+<status status="FAIL" endtime="20190513 15:58:59.688" starttime="20190513 15:58:59.680"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.689" starttime="20190513 15:58:59.679"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>404</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.691" level="INFO">${Status} = 404 Not Found</msg>
+<status status="PASS" endtime="20190513 15:58:59.691" starttime="20190513 15:58:59.691"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.693" starttime="20190513 15:58:59.692"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.694" starttime="20190513 15:58:59.689"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.696" level="INFO">${Response} = {"name":"NotFound","message":"No record found for id '9999729'","code":404,"className":"not-found","errors":{}}</msg>
+<status status="PASS" endtime="20190513 15:58:59.696" starttime="20190513 15:58:59.696"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.697" level="INFO">{"name":"NotFound","message":"No record found for id '9999729'","code":404,"className":"not-found","errors":{}}</msg>
+<status status="PASS" endtime="20190513 15:58:59.697" starttime="20190513 15:58:59.696"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.697" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:58:59.697" starttime="20190513 15:58:59.697"></status>
+</kw>
+<msg timestamp="20190513 15:58:59.697" level="INFO">${Response} = {"name":"NotFound","message":"No record found for id '9999729'","code":404,"className":"not-found","errors":{}}</msg>
+<status status="PASS" endtime="20190513 15:58:59.697" starttime="20190513 15:58:59.695"></status>
+</kw>
+<kw name="Response Body Should Contain" library="HttpLibrary.HTTP">
+<doc>Fails if the response body does not contain `should_contain`</doc>
+<arguments>
+<arg>"message":"No record found for id '${Orderid}'"</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.698" starttime="20190513 15:58:59.698"></status>
+</kw>
+<doc>Validate to Add product, get the product with created id, update product and delete product</doc>
+<tags>
+<tag>products</tag>
+</tags>
+<status status="PASS" endtime="20190513 15:58:59.698" critical="yes" starttime="20190513 15:58:59.495"></status>
+</test>
+<test id="s1-t2" name="PostProduct400">
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this
+before issuing any HTTP requests.</doc>
+<arguments>
+<arg>${Host}</arg>
+<arg>${Verb}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.701" level="INFO">Host for next HTTP request set to 'localhost:3030'</msg>
+<msg timestamp="20190513 15:58:59.702" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20190513 15:58:59.702" starttime="20190513 15:58:59.700"></status>
+</kw>
+<kw name="Set Header" library="Api-Keywords">
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Content Application</arg>
+<arg>application/json</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.703" level="INFO">Set request header "Content Application" to "application/json"</msg>
+<status status="PASS" endtime="20190513 15:58:59.703" starttime="20190513 15:58:59.703"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.703" starttime="20190513 15:58:59.702"></status>
+</kw>
+<kw name="Set Request Body" library="HttpLibrary.HTTP">
+<doc>Set the request body for the next HTTP request.</doc>
+<arguments>
+<arg>${InvalidBody}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.704" level="INFO">Request body set to "name=xyz".</msg>
+<status status="PASS" endtime="20190513 15:58:59.704" starttime="20190513 15:58:59.703"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>HttpLibrary.HTTP.POST</arg>
+<arg>${ProductsUri}</arg>
+</arguments>
+<kw name="POST" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP POST request.</doc>
+<arguments>
+<arg>${ProductsUri}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.722" level="FAIL">Request should have succeeded, but was "400 Bad Request".</msg>
+<status status="FAIL" endtime="20190513 15:58:59.722" starttime="20190513 15:58:59.705"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.723" starttime="20190513 15:58:59.704"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>400</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.730" level="INFO">${Status} = 400 Bad Request</msg>
+<status status="PASS" endtime="20190513 15:58:59.730" starttime="20190513 15:58:59.729"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.732" starttime="20190513 15:58:59.731"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.732" starttime="20190513 15:58:59.725"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.733" level="INFO">${Response} = {"name":"BadRequest","message":"Invalid Parameters","code":400,"className":"bad-request","data":{},"errors":["should have required property 'type'","should have required property 'upc'","should have r...</msg>
+<status status="PASS" endtime="20190513 15:58:59.733" starttime="20190513 15:58:59.733"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.734" level="INFO">{"name":"BadRequest","message":"Invalid Parameters","code":400,"className":"bad-request","data":{},"errors":["should have required property 'type'","should have required property 'upc'","should have required property 'description'","should have required property 'model'"]}</msg>
+<status status="PASS" endtime="20190513 15:58:59.734" starttime="20190513 15:58:59.733"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.734" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:58:59.734" starttime="20190513 15:58:59.734"></status>
+</kw>
+<msg timestamp="20190513 15:58:59.734" level="INFO">${Response} = {"name":"BadRequest","message":"Invalid Parameters","code":400,"className":"bad-request","data":{},"errors":["should have required property 'type'","should have required property 'upc'","should have r...</msg>
+<status status="PASS" endtime="20190513 15:58:59.734" starttime="20190513 15:58:59.733"></status>
+</kw>
+<kw name="Response Body Should Contain" library="HttpLibrary.HTTP">
+<doc>Fails if the response body does not contain `should_contain`</doc>
+<arguments>
+<arg>"message":"Invalid Parameters"</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.735" starttime="20190513 15:58:59.735"></status>
+</kw>
+<doc>Validate POST request for 400 response code passing invalid parameters</doc>
+<tags>
+<tag>products</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20190513 15:58:59.735" critical="yes" starttime="20190513 15:58:59.699"></status>
+</test>
+<test id="s1-t3" name="PostProduct201">
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this
+before issuing any HTTP requests.</doc>
+<arguments>
+<arg>${Host}</arg>
+<arg>${Verb}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.738" level="INFO">Host for next HTTP request set to 'localhost:3030'</msg>
+<msg timestamp="20190513 15:58:59.738" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20190513 15:58:59.738" starttime="20190513 15:58:59.737"></status>
+</kw>
+<kw name="Set Header" library="Api-Keywords">
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Content Application</arg>
+<arg>application/json</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.740" level="INFO">Set request header "Content Application" to "application/json"</msg>
+<status status="PASS" endtime="20190513 15:58:59.740" starttime="20190513 15:58:59.739"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.740" starttime="20190513 15:58:59.739"></status>
+</kw>
+<kw name="Set Request Body" library="HttpLibrary.HTTP">
+<doc>Set the request body for the next HTTP request.</doc>
+<arguments>
+<arg>${Body}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.740" level="INFO">Request body set to "name=Trupti&amp;type=Test&amp;upc=xyz&amp;description=postapitest&amp;model=first".</msg>
+<status status="PASS" endtime="20190513 15:58:59.741" starttime="20190513 15:58:59.740"></status>
+</kw>
+<kw name="POST" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP POST request.</doc>
+<arguments>
+<arg>${ProductsUri}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.771" starttime="20190513 15:58:59.741"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>201</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.777" level="INFO">${Status} = 201 Created</msg>
+<status status="PASS" endtime="20190513 15:58:59.777" starttime="20190513 15:58:59.776"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.778" starttime="20190513 15:58:59.777"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.778" starttime="20190513 15:58:59.772"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.780" level="INFO">${Response} = {"id":9999730,"name":"Trupti","type":"Test","upc":"xyz","description":"postapitest","model":"first","updatedAt":"2019-05-13T10:28:59.753Z","createdAt":"2019-05-13T10:28:59.753Z"}</msg>
+<status status="PASS" endtime="20190513 15:58:59.780" starttime="20190513 15:58:59.780"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.781" level="INFO">{"id":9999730,"name":"Trupti","type":"Test","upc":"xyz","description":"postapitest","model":"first","updatedAt":"2019-05-13T10:28:59.753Z","createdAt":"2019-05-13T10:28:59.753Z"}</msg>
+<status status="PASS" endtime="20190513 15:58:59.781" starttime="20190513 15:58:59.781"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.782" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:58:59.782" starttime="20190513 15:58:59.781"></status>
+</kw>
+<msg timestamp="20190513 15:58:59.782" level="INFO">${Response} = {"id":9999730,"name":"Trupti","type":"Test","upc":"xyz","description":"postapitest","model":"first","updatedAt":"2019-05-13T10:28:59.753Z","createdAt":"2019-05-13T10:28:59.753Z"}</msg>
+<status status="PASS" endtime="20190513 15:58:59.782" starttime="20190513 15:58:59.779"></status>
+</kw>
+<kw name="Response Body Should Contain" library="HttpLibrary.HTTP">
+<doc>Fails if the response body does not contain `should_contain`</doc>
+<arguments>
+<arg>"name":"Trupti"</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.783" starttime="20190513 15:58:59.783"></status>
+</kw>
+<kw name="Get Json Value" library="HttpLibrary.HTTP">
+<doc>Get the target node of the JSON document `json_string` specified by `json_pointer`.</doc>
+<arguments>
+<arg>${Response}</arg>
+<arg>/id</arg>
+</arguments>
+<assign>
+<var>${Orderid}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.784" level="INFO">${Orderid} = 9999730</msg>
+<status status="PASS" endtime="20190513 15:58:59.784" starttime="20190513 15:58:59.783"></status>
+</kw>
+<doc>Validate that new record gets created by calling POST method.
+
+Expected:
+| Response Code | 201 |
+| Response Message | Product Id of newly added records |</doc>
+<tags>
+<tag>products</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20190513 15:58:59.784" critical="yes" starttime="20190513 15:58:59.736"></status>
+</test>
+<test id="s1-t4" name="Verify200responseforGetAllProducts">
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this
+before issuing any HTTP requests.</doc>
+<arguments>
+<arg>${Host}</arg>
+<arg>${Verb}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.786" level="INFO">Host for next HTTP request set to 'localhost:3030'</msg>
+<msg timestamp="20190513 15:58:59.786" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20190513 15:58:59.786" starttime="20190513 15:58:59.786"></status>
+</kw>
+<kw name="GET" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>${ProductsUri}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.991" starttime="20190513 15:58:59.787"></status>
+</kw>
+<kw name="Set Header" library="Api-Keywords">
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Content Application</arg>
+<arg>application/json</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.992" level="INFO">Set request header "Content Application" to "application/json"</msg>
+<status status="PASS" endtime="20190513 15:58:59.992" starttime="20190513 15:58:59.991"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.992" starttime="20190513 15:58:59.991"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>200</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.993" level="INFO">${Status} = 200 OK</msg>
+<status status="PASS" endtime="20190513 15:58:59.993" starttime="20190513 15:58:59.992"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:58:59.993" starttime="20190513 15:58:59.993"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.993" starttime="20190513 15:58:59.992"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:58:59.994" level="INFO">${Response} = {"total":52002,"limit":10,"skip":0,"data":[{"id":43900,"name":"Duracell - AAA Batteries (4-Pack)","type":"HardGood","price":5.49,"upc":"041333424019","shipping":0,"description":"Compatible with select...</msg>
+<status status="PASS" endtime="20190513 15:58:59.994" starttime="20190513 15:58:59.994"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.994" level="INFO">{"total":52002,"limit":10,"skip":0,"data":[{"id":43900,"name":"Duracell - AAA Batteries (4-Pack)","type":"HardGood","price":5.49,"upc":"041333424019","shipping":0,"description":"Compatible with select electronic devices; AAA size; DURALOCK Power Preserve technology; 4-pack","manufacturer":"Duracell","model":"MN2400B4Z","url":"http://www.bestbuy.com/site/duracell-aaa-batteries-4-pack/43900.p?id=1051384074145&amp;skuId=43900&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/4390/43900_sa.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0208002","name":"Alkaline Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat248700050021","name":"Housewares","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat303600050001","name":"Household Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat312300050015","name":"Connected Home &amp; Housewares","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"}]},{"id":48530,"name":"Duracell - AA 1.5V CopperTop Batteries (4-Pack)","type":"HardGood","price":5.49,"upc":"041333415017","shipping":0,"description":"Long-lasting energy; DURALOCK Power Preserve technology; for toys, clocks, radios, games, remotes, PDAs and more","manufacturer":"Duracell","model":"MN1500B4Z","url":"http://www.bestbuy.com/site/duracell-aa-1-5v-coppertop-batteries-4-pack/48530.p?id=1099385268988&amp;skuId=48530&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/4853/48530_sa.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0208002","name":"Alkaline Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat248700050021","name":"Housewares","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat303600050001","name":"Household Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat312300050015","name":"Connected Home &amp; Housewares","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"}]},{"id":127687,"name":"Duracell - AA Batteries (8-Pack)","type":"HardGood","price":7.49,"upc":"041333825014","shipping":0,"description":"Compatible with select electronic devices; AA size; DURALOCK Power Preserve technology; 8-pack","manufacturer":"Duracell","model":"MN1500B8Z","url":"http://www.bestbuy.com/site/duracell-aa-batteries-8-pack/127687.p?id=1051384045676&amp;skuId=127687&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/1276/127687_sa.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0208002","name":"Alkaline Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat248700050021","name":"Housewares","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat303600050001","name":"Household Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat312300050015","name":"Connected Home &amp; Housewares","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"}]},{"id":150115,"name":"Energizer - MAX Batteries AA (4-Pack)","type":"HardGood","price":4.99,"upc":"039800011329","shipping":0,"description":"4-pack AA alkaline batteries; battery tester included","manufacturer":"Energizer","model":"E91BP-4","url":"http://www.bestbuy.com/site/energizer-max-batteries-aa-4-pack/150115.p?id=1051384046217&amp;skuId=150115&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/1501/150115_sa.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0208002","name":"Alkaline Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat248700050021","name":"Housewares","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat303600050001","name":"Household Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat312300050015","name":"Connected Home &amp; Housewares","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"}]},{"id":185230,"name":"Duracell - C Batteries (4-Pack)","type":"HardGood","price":8.99,"upc":"041333440019","shipping":0,"description":"Compatible with select electronic devices; C size; DURALOCK Power Preserve technology; 4-pack","manufacturer":"Duracell","model":"MN1400R4Z","url":"http://www.bestbuy.com/site/duracell-c-batteries-4-pack/185230.p?id=1051384046486&amp;skuId=185230&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/1852/185230_sa.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0208002","name":"Alkaline Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat248700050021","name":"Housewares","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat303600050001","name":"Household Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat312300050015","name":"Connected Home &amp; Housewares","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"}]},{"id":185267,"name":"Duracell - D Batteries (4-Pack)","type":"HardGood","price":9.99,"upc":"041333430010","shipping":0,"description":"Compatible with select electronic devices; D size; DURALOCK Power Preserve technology; 4-pack","manufacturer":"Duracell","model":"MN1300R4Z","url":"http://www.bestbuy.com/site/duracell-d-batteries-4-pack/185267.p?id=1051384046551&amp;skuId=185267&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/1852/185267_sa.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0208002","name":"Alkaline Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat248700050021","name":"Housewares","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat303600050001","name":"Household Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat312300050015","name":"Connected Home &amp; Housewares","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"}]},{"id":309062,"name":"Pioneer - 4\" 3-Way Surface-Mount Speakers with IMPP Composite Cones (Pair) - Black","type":"HardGood","price":144.99,"upc":"012562165141","shipping":0,"description":"80W maximum power (20W RMS); 4\" IMPP composite cone woofer; 3/4\" horn tweeter","manufacturer":"Pioneer","model":"TS-X200","url":"http://www.bestbuy.com/site/pioneer-4-3-way-surface-mount-speakers-with-impp-composite-cones-pair-black/309062.p?id=1218643240258&amp;skuId=309062&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/0309/0309062_sa.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0300000","name":"Car Electronics &amp; GPS","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"abcat0302000","name":"Car Audio","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"abcat0302005","name":"Car Speakers","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat360500050015","name":"4\" Car Speakers","createdAt":"2016-11-17T17:57:04.643Z","updatedAt":"2016-11-17T17:57:04.643Z"}]},{"id":312290,"name":"Duracell - 9V Batteries (2-Pack)","type":"HardGood","price":7.99,"upc":"041333216010","shipping":0,"description":"Compatible with select electronic devices; alkaline chemistry; 9V size; DURALOCK Power Preserve technology; 2-pack","manufacturer":"Duracell","model":"MN1604B2Z","url":"http://www.bestbuy.com/site/duracell-9v-batteries-2-pack/312290.p?id=1051384050321&amp;skuId=312290&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/3122/312290_sa.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0208002","name":"Alkaline Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat248700050021","name":"Housewares","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat303600050001","name":"Household Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat312300050015","name":"Connected Home &amp; Housewares","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"}]},{"id":333179,"name":"Energizer - N Cell E90 Batteries (2-Pack)","type":"HardGood","price":5.99,"upc":"039800013200","shipping":0,"description":"Alkaline batteries; 1.5V","manufacturer":"Energizer","model":"E90BP-2","url":"http://www.bestbuy.com/site/energizer-n-cell-e90-batteries-2-pack/333179.p?id=1185268509951&amp;skuId=333179&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/3331/333179_sa.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0208006","name":"Specialty Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat248700050021","name":"Housewares","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat303600050001","name":"Household Batteries","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat312300050015","name":"Connected Home &amp; Housewares","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"}]},{"id":346575,"name":"Metra - Radio Installation Dash Kit for Most 1989-2000 Ford, Lincoln &amp; Mercury Vehicles - Black","type":"HardGood","price":16.99,"upc":"086429002757","shipping":0,"description":"From our expanded online assortment; compatible with most 1989-2000 Ford, Lincoln and Mercury vehicles; snap-in TurboKit offers fast installation; spacer/trim ring; rear support bracket","manufacturer":"Metra","model":"99-5512","url":"http://www.bestbuy.com/site/metra-radio-installation-dash-kit-for-most-1989-2000-ford-lincoln-mercury-vehicles-black/346575.p?id=1218118704590&amp;skuId=346575&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/3465/346575_rc.jpg","createdAt":"2016-11-17T17:58:03.298Z","updatedAt":"2016-11-17T17:58:03.298Z","categories":[{"id":"abcat0300000","name":"Car Electronics &amp; GPS","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat165900050023","name":"Car Installation Parts &amp; Accessories","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat165900050031","name":"Deck Installation Parts","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat165900050033","name":"Dash Installation Kits","createdAt":"2016-11-17T17:57:05.399Z","updatedAt":"2016-11-17T17:57:05.399Z"},{"id":"pcmcat331600050007","name":"Car Audio Installation Parts","createdAt":"2016-11-17T17:57:04.643Z","updatedAt":"2016-11-17T17:57:04.643Z"}]}]}</msg>
+<status status="PASS" endtime="20190513 15:58:59.995" starttime="20190513 15:58:59.994"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.995" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:58:59.995" starttime="20190513 15:58:59.995"></status>
+</kw>
+<msg timestamp="20190513 15:58:59.995" level="INFO">${Response} = {"total":52002,"limit":10,"skip":0,"data":[{"id":43900,"name":"Duracell - AAA Batteries (4-Pack)","type":"HardGood","price":5.49,"upc":"041333424019","shipping":0,"description":"Compatible with select...</msg>
+<status status="PASS" endtime="20190513 15:58:59.995" starttime="20190513 15:58:59.993"></status>
+</kw>
+<doc>Validate 200 response for successfully getting all the records</doc>
+<tags>
+<tag>products</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20190513 15:58:59.996" critical="yes" starttime="20190513 15:58:59.784"></status>
+</test>
+<test id="s1-t5" name="GetProductswithProductid">
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this
+before issuing any HTTP requests.</doc>
+<arguments>
+<arg>${Host}</arg>
+<arg>${Verb}</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.997" level="INFO">Host for next HTTP request set to 'localhost:3030'</msg>
+<msg timestamp="20190513 15:58:59.997" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20190513 15:58:59.997" starttime="20190513 15:58:59.997"></status>
+</kw>
+<kw name="Set Header" library="Api-Keywords">
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Content Application</arg>
+<arg>application/json</arg>
+</arguments>
+<msg timestamp="20190513 15:58:59.998" level="INFO">Set request header "Content Application" to "application/json"</msg>
+<status status="PASS" endtime="20190513 15:58:59.998" starttime="20190513 15:58:59.998"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:58:59.998" starttime="20190513 15:58:59.997"></status>
+</kw>
+<kw name="GET" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>${ProductsUri}/${Productid}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:59:00.010" starttime="20190513 15:58:59.998"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>200</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:59:00.013" level="INFO">${Status} = 200 OK</msg>
+<status status="PASS" endtime="20190513 15:59:00.013" starttime="20190513 15:59:00.012"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:59:00.013" starttime="20190513 15:59:00.013"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:59:00.013" starttime="20190513 15:59:00.011"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:59:00.014" level="INFO">${Response} = {"id":9132294,"name":"Yamaha - P32D Pianica - Brown/White","type":"HardGood","price":59.99,"upc":"086792895093","shipping":0,"description":"Keyboard wind instrument; designed for general music educati...</msg>
+<status status="PASS" endtime="20190513 15:59:00.014" starttime="20190513 15:59:00.014"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.015" level="INFO">{"id":9132294,"name":"Yamaha - P32D Pianica - Brown/White","type":"HardGood","price":59.99,"upc":"086792895093","shipping":0,"description":"Keyboard wind instrument; designed for general music education; mouthpiece, anticorrosive reed and blowing pipe; 32-note design; shock-resistant, double-walled, blow-molded case","manufacturer":"Yamaha","model":"EN033P32D","url":"http://www.bestbuy.com/site/yamaha-p32d-pianica-brown-white/9132294.p?id=1218990144149&amp;skuId=9132294&amp;cmp=RMXCC","image":"http://img.bbystatic.com/BestBuy_US/images/products/9132/9132294_sa.jpg","createdAt":"2016-11-17T17:58:46.655Z","updatedAt":"2016-11-17T17:58:46.655Z","categories":[{"id":"abcat0207000","name":"Musical Instruments","createdAt":"2016-11-17T17:57:04.285Z","updatedAt":"2016-11-17T17:57:04.285Z"},{"id":"pcmcat151600050037","name":"Keyboards","createdAt":"2016-11-17T17:57:04.899Z","updatedAt":"2016-11-17T17:57:04.899Z"},{"id":"pcmcat151600050040","name":"Portable Keyboards","createdAt":"2016-11-17T17:57:04.899Z","updatedAt":"2016-11-17T17:57:04.899Z"}]}</msg>
+<status status="PASS" endtime="20190513 15:59:00.015" starttime="20190513 15:59:00.014"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.015" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:59:00.015" starttime="20190513 15:59:00.015"></status>
+</kw>
+<msg timestamp="20190513 15:59:00.015" level="INFO">${Response} = {"id":9132294,"name":"Yamaha - P32D Pianica - Brown/White","type":"HardGood","price":59.99,"upc":"086792895093","shipping":0,"description":"Keyboard wind instrument; designed for general music educati...</msg>
+<status status="PASS" endtime="20190513 15:59:00.016" starttime="20190513 15:59:00.014"></status>
+</kw>
+<kw name="Response Body Should Contain" library="HttpLibrary.HTTP">
+<doc>Fails if the response body does not contain `should_contain`</doc>
+<arguments>
+<arg>"id":${Productid}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:59:00.016" starttime="20190513 15:59:00.016"></status>
+</kw>
+<doc>Test case to Verify get method endpoint for Products service.
+
+Expected: Response should contain product with parameter passed</doc>
+<tags>
+<tag>products</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20190513 15:59:00.017" critical="yes" starttime="20190513 15:58:59.996"></status>
+</test>
+<test id="s1-t6" name="Validate500Response">
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this
+before issuing any HTTP requests.</doc>
+<arguments>
+<arg>${Host}</arg>
+<arg>${Verb}</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.019" level="INFO">Host for next HTTP request set to 'localhost:3030'</msg>
+<msg timestamp="20190513 15:59:00.019" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20190513 15:59:00.019" starttime="20190513 15:59:00.018"></status>
+</kw>
+<kw name="Set Header" library="Api-Keywords">
+<kw name="Set Request Header" library="HttpLibrary.HTTP">
+<doc>Sets a request header for the next request.</doc>
+<arguments>
+<arg>Content Application</arg>
+<arg>application/json</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.021" level="INFO">Set request header "Content Application" to "application/json"</msg>
+<status status="PASS" endtime="20190513 15:59:00.021" starttime="20190513 15:59:00.020"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:59:00.021" starttime="20190513 15:59:00.019"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>HttpLibrary.HTTP.GET</arg>
+<arg>${ProductsUri}?$limit=xyz</arg>
+</arguments>
+<kw name="GET" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP GET request.</doc>
+<arguments>
+<arg>${ProductsUri}?$limit=xyz</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.205" level="FAIL">Request should have succeeded, but was "500 Internal Server Error".</msg>
+<status status="FAIL" endtime="20190513 15:59:00.205" starttime="20190513 15:59:00.026"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:59:00.205" starttime="20190513 15:59:00.023"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>500</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:59:00.207" level="INFO">${Status} = 500 Internal Server Error</msg>
+<status status="PASS" endtime="20190513 15:59:00.207" starttime="20190513 15:59:00.206"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:59:00.207" starttime="20190513 15:59:00.207"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:59:00.207" starttime="20190513 15:59:00.206"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:59:00.208" level="INFO">${Response} = {"name":"GeneralError","message":"SQLITE_ERROR: no such column: NaN","code":500,"className":"general-error","data":{},"errors":{}}</msg>
+<status status="PASS" endtime="20190513 15:59:00.208" starttime="20190513 15:59:00.208"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.209" level="INFO">{"name":"GeneralError","message":"SQLITE_ERROR: no such column: NaN","code":500,"className":"general-error","data":{},"errors":{}}</msg>
+<status status="PASS" endtime="20190513 15:59:00.209" starttime="20190513 15:59:00.208"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.209" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:59:00.209" starttime="20190513 15:59:00.209"></status>
+</kw>
+<msg timestamp="20190513 15:59:00.209" level="INFO">${Response} = {"name":"GeneralError","message":"SQLITE_ERROR: no such column: NaN","code":500,"className":"general-error","data":{},"errors":{}}</msg>
+<status status="PASS" endtime="20190513 15:59:00.209" starttime="20190513 15:59:00.208"></status>
+</kw>
+<doc>Validates the response code when invalid parameter is passed.
+
+Expected: 500 Internal server response</doc>
+<tags>
+<tag>products</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20190513 15:59:00.210" critical="yes" starttime="20190513 15:59:00.018"></status>
+</test>
+<test id="s1-t7" name="DeleteProductresponse404">
+<kw name="Create Http Context" library="HttpLibrary.HTTP">
+<doc>Sets the HTTP host to use for future requests. You must call this
+before issuing any HTTP requests.</doc>
+<arguments>
+<arg>${Host}</arg>
+<arg>${Verb}</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.211" level="INFO">Host for next HTTP request set to 'localhost:3030'</msg>
+<msg timestamp="20190513 15:59:00.211" level="INFO">Scheme for next HTTP request set to 'http'</msg>
+<status status="PASS" endtime="20190513 15:59:00.211" starttime="20190513 15:59:00.211"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>HttpLibrary.HTTP.Delete</arg>
+<arg>${ProductsUri}/1</arg>
+</arguments>
+<kw name="DELETE" library="HttpLibrary.HTTP">
+<doc>Issues a HTTP DELETE request.</doc>
+<arguments>
+<arg>${ProductsUri}/1</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.225" level="FAIL">Request should have succeeded, but was "404 Not Found".</msg>
+<status status="FAIL" endtime="20190513 15:59:00.225" starttime="20190513 15:59:00.212"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:59:00.226" starttime="20190513 15:59:00.212"></status>
+</kw>
+<kw name="Verify Response" library="Api-Keywords">
+<arguments>
+<arg>404</arg>
+</arguments>
+<kw name="Get Response Status" library="HttpLibrary.HTTP">
+<doc>Returns the response status line (e.g. "200 OK" or "404 Not found")</doc>
+<assign>
+<var>${Status}</var>
+</assign>
+<msg timestamp="20190513 15:59:00.228" level="INFO">${Status} = 404 Not Found</msg>
+<status status="PASS" endtime="20190513 15:59:00.228" starttime="20190513 15:59:00.228"></status>
+</kw>
+<kw name="Should Start With" library="BuiltIn">
+<doc>Fails if the string ``str1`` does not start with the string ``str2``.</doc>
+<arguments>
+<arg>${Status}</arg>
+<arg>${Code}</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:59:00.229" starttime="20190513 15:59:00.229"></status>
+</kw>
+<status status="PASS" endtime="20190513 15:59:00.229" starttime="20190513 15:59:00.226"></status>
+</kw>
+<kw name="Get Response" library="Api-Keywords">
+<assign>
+<var>${Response}</var>
+</assign>
+<kw name="Get Response Body" library="HttpLibrary.HTTP">
+<doc>Get the response body.</doc>
+<assign>
+<var>${Response}</var>
+</assign>
+<msg timestamp="20190513 15:59:00.230" level="INFO">${Response} = {"name":"NotFound","message":"No record found for id '1'","code":404,"className":"not-found","errors":{}}</msg>
+<status status="PASS" endtime="20190513 15:59:00.230" starttime="20190513 15:59:00.230"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.231" level="INFO">{"name":"NotFound","message":"No record found for id '1'","code":404,"className":"not-found","errors":{}}</msg>
+<status status="PASS" endtime="20190513 15:59:00.231" starttime="20190513 15:59:00.231"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${Response}</arg>
+</arguments>
+<msg timestamp="20190513 15:59:00.231" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" endtime="20190513 15:59:00.231" starttime="20190513 15:59:00.231"></status>
+</kw>
+<msg timestamp="20190513 15:59:00.232" level="INFO">${Response} = {"name":"NotFound","message":"No record found for id '1'","code":404,"className":"not-found","errors":{}}</msg>
+<status status="PASS" endtime="20190513 15:59:00.232" starttime="20190513 15:59:00.229"></status>
+</kw>
+<kw name="Response Body Should Contain" library="HttpLibrary.HTTP">
+<doc>Fails if the response body does not contain `should_contain`</doc>
+<arguments>
+<arg>"message":"No record found for id '1'"</arg>
+</arguments>
+<status status="PASS" endtime="20190513 15:59:00.232" starttime="20190513 15:59:00.232"></status>
+</kw>
+<doc>Validate user gets error response code when *DELETE* method is called for non existent product ID
+
+Expected:
+
+| Response Code | 404 |
+| Response Message | No Records Found for _ID_ |</doc>
+<tags>
+<tag>products</tag>
+<tag>smoke</tag>
+</tags>
+<status status="PASS" endtime="20190513 15:59:00.232" critical="yes" starttime="20190513 15:59:00.210"></status>
+</test>
+<doc>This suite contains Test cases for product endpoint.
+
+Covers following :
+
+| Creates New Product |
+| Gets all products |
+| Gets particular product |
+| Updates particular Product |
+| Deletes particular product |</doc>
+<status status="PASS" endtime="20190513 15:59:00.233" starttime="20190513 15:58:58.796"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="7">Critical Tests</stat>
+<stat fail="0" pass="7">All Tests</stat>
+</total>
+<tag>
+<stat fail="0" pass="7">products</stat>
+<stat fail="0" pass="6">smoke</stat>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="ProductsApi" pass="7">ProductsApi</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

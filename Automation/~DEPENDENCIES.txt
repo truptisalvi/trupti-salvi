@@ -1,0 +1,15 @@
+*** Settings ***
+Library           String
+Resource          Common/Keywords/Android-Keywords.robot
+Resource          Common/Keywords/Api-Keywords.robot
+Resource          Common/Variables/Android-Variables.robot
+Resource          Common/Locators/Android-Locators.robot
+Resource          Common/Variables/API-Variables.robot
+Library           AppiumLibrary
+Library           HttpLibrary.HTTP
+Library           OperatingSystem
+Library           Collections
+Library           String
+Library           DateTime
+#Library           RequestsLibrary
+Library           JSONLibrary

@@ -1,0 +1,15 @@
+--include=android
+--outputdir
+C:\Users\Rohan\AppData\Local\Temp\RIDE5psd0y8p.d
+-C
+off
+-W
+88
+--suite
+N26automationTesting.TestSuites.GnuCashTest.GnuTestCases
+--test
+N26automationTesting.TestSuites.GnuCashTest.GnuTestCases.Add Account
+--suite
+N26automationTesting.TestSuites.GnuCashTest.GnuTestCases
+--test
+N26automationTesting.TestSuites.GnuCashTest.GnuTestCases.Edit Account Name
